@@ -120,6 +120,26 @@ const AggregateSpecsPlugin: Plugin = (builder) => {
         ),
       },
       {
+        id: "deciles_disc",
+        humanLabel: "deciles (discrete)",
+        HumanLabel: "Deciles (discrete)",
+        isSuitableType: isNumberLike,
+        sqlAggregateWrap: (sqlFrag) => sql.fragment`percentile_disc(array[0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]) within group (order by ${sqlFrag})`,
+
+        pgTypeAndModifierModifier: convertWithMapAndFallback(
+          {
+            [SMALLINT_OID]: NUMERIC_OID,
+            [INTEGER_OID]: NUMERIC_OID,
+            [BIGINT_OID]: NUMERIC_OID,
+            [NUMERIC_OID]: NUMERIC_OID,
+            [REAL_OID]: DOUBLE_PRECISION_OID,
+            [DOUBLE_PRECISION_OID]: DOUBLE_PRECISION_OID,
+            [INTERVAL_OID]: INTERVAL_OID,
+          },
+          "1700" /* numeric */
+        )
+      },
+      {
         id: "stddevSample",
         humanLabel: "sample standard deviation",
         HumanLabel: "Sample standard deviation",
