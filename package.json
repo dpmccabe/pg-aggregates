@@ -10,7 +10,7 @@
     "tslint": "prettier --list-different 'src/**/*' && tslint --config tslint.json --project tsconfig.json",
     "postgraphile": "nodemon --watch dist -x './postgraphile.sh'",
     "dev": "psql -X1v ON_ERROR_STOP=1 -f __tests__/schema.sql graphile_aggregates && concurrently --kill-others 'npm run watch' 'npm run postgraphile'",
-    "prepack": "rm -Rf dist && npm run build"
+    "prepare": "rm -Rf dist && npm run build"
   },
   "repository": {
     "type": "git",
