@@ -33,9 +33,9 @@
   },
   "homepage": "https://github.com/graphile/pg-aggregates#readme",
   "peerDependencies": {
-    "graphile-build": "^4.12.0-alpha.0",
-    "graphile-build-pg": "^4.12.0-alpha.0",
-    "graphql": ">0.6.0 <16"
+    "graphile-build": "^4.13.0",
+    "graphile-build-pg": "^4.13.0",
+    "graphql": "^16.7.1"
   },
   "devDependencies": {
     "@graphile-contrib/pg-simplify-inflector": "^6.1.0",
